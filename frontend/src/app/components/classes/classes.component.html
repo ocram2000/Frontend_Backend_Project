@@ -1,0 +1,65 @@
+
+<h1>Manage your classes</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card card-body">
+            <form #classesForm="ngForm" (ngSubmit)="addClasses(classesForm)">
+
+                <input type="hidden" name="_id" [(ngModel)] = "classesService.selectedclass._id">
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Enter class name" [(ngModel)] = "classesService.selectedclass.name">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="course" placeholder="Enter course name" [(ngModel)] = "classesService.selectedclass.course">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="year" placeholder="Enter year" [(ngModel)] = "classesService.selectedclass.year">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="note" placeholder="Enter a note" [(ngModel)] = "classesService.selectedclass.note">
+                </div>
+
+                <button class="btn btn-primary mr-2" (click)="resetForm(classesForm)">
+                    Clean
+                </button>
+                <button class="btn btn-secondary">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Year</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let clas of classesService.allclasses">
+                    <td>{{ clas.name }}</td>
+                    <td>{{ clas.course }}</td>
+                    <td>{{ clas.year }}</td>
+                    <td>{{ clas.note }}</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm" (click) = "editClasses(clas)">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteClasses(clas._id)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+ 

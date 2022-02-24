@@ -1,0 +1,95 @@
+<h1>Manage student's grades</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card card-body">
+            <form #gradesForm="ngForm" (ngSubmit)="addGrades(gradesForm)">
+
+                <input type="hidden" name="_id" [(ngModel)] = "gradesService.selectedgrades._id">
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="studentnumber" placeholder="Enter student's number" [(ngModel)] = "gradesService.selectedgrades.studentnumber">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="student" placeholder="Enter student's name" [(ngModel)] = "gradesService.selectedgrades.student">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="classe" placeholder="Enter class name" [(ngModel)] = "gradesService.selectedgrades.classe">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="course" placeholder="Enter course name" [(ngModel)] = "gradesService.selectedgrades.course">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="teste1" placeholder="Enter test1 grade" [(ngModel)] = "gradesService.selectedgrades.teste1">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="teste2" placeholder="Enter test2 grade" [(ngModel)] = "gradesService.selectedgrades.teste2">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="tp1" placeholder="Enter tp1 grade" [(ngModel)] = "gradesService.selectedgrades.tp1">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="tp2" placeholder="Enter tp2 grade" [(ngModel)] = "gradesService.selectedgrades.tp2">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="note" placeholder="Enter a note" [(ngModel)] = "gradesService.selectedgrades.note">
+                </div>
+
+                <button class="btn btn-primary mr-2" (click)="resetForm(gradesForm)">
+                    Clean
+                </button>
+                <button class="btn btn-secondary">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Student number</th>
+                    <th>Student name</th>
+                    <th>Class</th>
+                    <th>Course</th>
+                    <th>Test1</th>
+                    <th>Test2</th>
+                    <th>TP1</th>
+                    <th>TP2</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let grad of gradesService.allgrades">
+                    <td>{{ grad.studentnumber }}</td>
+                    <td>{{ grad.student }}</td>
+                    <td>{{ grad.classe }}</td>
+                    <td>{{ grad.course }}</td>
+                    <td>{{ grad.teste1 }}</td>
+                    <td>{{ grad.teste2 }}</td>
+                    <td>{{ grad.tp1 }}</td>
+                    <td>{{ grad.tp2 }}</td>
+                    <td>{{ grad.note }}</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm" (click) = "editGrades(grad)">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteGrades(grad._id)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+ 
+

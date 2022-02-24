@@ -1,0 +1,76 @@
+###
+GET   http://localhost:3000/api/classes
+
+###
+POST  http://localhost:3000/api/classes
+Content-Type: application/json
+
+{
+    "name" : "ISI",
+    "course" : "ISI",
+    "year" : "2021"
+}
+
+
+
+###
+GET   http://localhost:3000/api/classes/60cf7ece35340c51b0130c82
+
+
+
+###
+DELETE http://localhost:3000/api/classes/60cd46281f4c6c0f48838722
+
+###
+PUT http://localhost:3000/api/classes/60ce29f994421e0e7c21c696
+Content-Type: application/json
+
+{
+    "name" : "CSI",
+    "year" : "2030"
+}
+
+
+
+
+
+###
+GET   http://localhost:3000/api/evaluation
+
+
+###
+POST  http://localhost:3000/api/evaluation
+Content-Type: application/json
+
+{
+    "teste1" : "Teste1",
+    "teste2" : "Teste2",
+    "tp1" : "Tp1",
+    "tp2" : "Tp2",
+    "classe" : "Visao",
+    "course" : "ESI"
+}
+
+
+
+
+
+
+###
+GET     http://localhost:3000/api/grades
+
+###
+POST    http://localhost:3000/api/grades
+Content-Type: application/json
+
+{
+    "studentnumber" : "16961",
+    "student" : "Marco Henriques",
+    "classe" : "Visao",
+    "course" : "ESI",
+    "teste1" : "16",
+    "teste2" : "10",
+    "tp1" : "14",
+    "tp2" : "16"
+
+}

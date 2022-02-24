@@ -1,0 +1,100 @@
+<h1>Manage your evaluations</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card card-body">
+            <form #evaluationForm="ngForm" (ngSubmit)="addEvaluation(evaluationForm)">
+
+                <input type="hidden" name="_id" [(ngModel)] = "evaluationService.selectedevaluation._id">
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="teste1" placeholder="Enter test1 name" [(ngModel)] = "evaluationService.selectedevaluation.teste1">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="perct1" placeholder="Enter percentage of test1" [(ngModel)] = "evaluationService.selectedevaluation.perct1">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="teste2" placeholder="Enter test2 name" [(ngModel)] = "evaluationService.selectedevaluation.teste2">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="perct2" placeholder="Enter percentage of test2" [(ngModel)] = "evaluationService.selectedevaluation.perct2">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="tp1" placeholder="Enter tp1 name" [(ngModel)] = "evaluationService.selectedevaluation.tp1">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="perctp1" placeholder="Enter percentage of tp1" [(ngModel)] = "evaluationService.selectedevaluation.perctp1">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="tp2" placeholder="Enter tp2 name" [(ngModel)] = "evaluationService.selectedevaluation.tp2">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="perctp2" placeholder="Enter percentage of tp2" [(ngModel)] = "evaluationService.selectedevaluation.perctp2">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="classe" placeholder="Enter class name" [(ngModel)] = "evaluationService.selectedevaluation.classe">
+                </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" name="course" placeholder="Enter course name" [(ngModel)] = "evaluationService.selectedevaluation.course">
+                </div>
+
+                <button class="btn btn-primary mr-2" (click)="resetForm(evaluationForm)">
+                    Clean
+                </button>
+                <button class="btn btn-secondary">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>teste1</th>
+                    <th>%teste1</th>
+                    <th>teste2</th>
+                    <th>%teste2</th>
+                    <th>tp1</th>
+                    <th>%tp1</th>
+                    <th>tp2</th>
+                    <th>%tp2</th>
+                    <th>Class</th>
+                    <th>Course</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let eval of evaluationService.allevaluation">
+                    <td>{{ eval.teste1 }}</td>
+                    <td>{{ eval.perct1 }}</td>
+                    <td>{{ eval.teste2 }}</td>
+                    <td>{{ eval.perct2 }}</td>
+                    <td>{{ eval.tp1 }}</td>
+                    <td>{{ eval.perctp1 }}</td>
+                    <td>{{ eval.tp2 }}</td>
+                    <td>{{ eval.perctp2 }}</td>
+                    <td>{{ eval.classe }}</td>
+                    <td>{{ eval.course }}</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm" (click) = "editEvaluation(eval)">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteEvaluation(eval._id)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+ 
